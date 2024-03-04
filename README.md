@@ -1,48 +1,49 @@
-# RecordFuse: A Record Linkage Application
+# RecordFuse: Merge & Clean Your Data with Ease
 
-## Overview
+This project aims to create a user-friendly web application for merging and deduplicating records across various datasets. It provides researchers, data analysts, and professionals with a powerful tool to tackle common challenges in data integration and cleaning.
 
-RecordFuse is a record linkage application designed to deduplicate and link records from datasets without unique identifiers. It is built on Splink, a Python package for probabilistic record linkage (entity resolution) that allows you to perform record linkage tasks without the need for training data.
+## Features
 
-## Key Features
+* **Supported Data Formats:** CSV, Excel spreadsheets
+* **Matching Algorithms:** Fuzzy matching, probabilistic linking, and rule-based methods
+* **Duplicate Detection & Resolution:** Identify and resolve potential duplicates accurately
+* **Intuitive Interface:** Visualize, filter, and manually review linked records
+* **Multiple Output Options:** Download merged datasets or export confidence scores
+* **Built with:** AngularJS, NestJS, MySQL, python: Splink Package
 
-- **Speed**: Capable of linking a million records on a laptop in approximately one minute.
-- **Accuracy**: Supports term frequency adjustments and user-defined fuzzy matching logic.
-- **Scalability**: Executes linkage jobs in Python (using DuckDB) or big-data backends like AWS Athena or Spark for 100+ million records.
-- **Unsupervised Learning**: No training data is required, as models can be trained using an unsupervised approach.
-- **Interactive Outputs**: Provides a wide range of interactive outputs to help users understand their model and diagnose linkage problems.
+## Status & Next Steps
 
-## Usage
+Currently still in the coding phase and have managed to:
 
-To use RecordFuse, you will need to install Splink using pip:
+* Adding user login and create account page.
+* A landing page for the user after login.
+* A CSV file upload page for user to upload a file they would like to process.
+* Implementing Data Retrieval from user for processing by ML model.
+* Built and ML Model that is hosted in Hugging Face.
 
-```bash
-pip install --upgrade splink
-```
+For our next steps we plan to:
 
-After installation, you can read in your dataset using pandas and import the necessary libraries:
+* Add routing to the web application to introduce a process flow.
+* Make the current user interface more friendly.
+* Implement authentication and authorization
+* Add options of either deduplicating or merging records according to results produced by ML model.
+* Option to download fused records.
 
-```python
-import pandas as pd
-import splink
-from splink.duckdb.linker import DuckDBLinker
-from splink.duckdb.blocking_rule_library import block_on
-import splink.duckdb.comparison_template_library as ctl
-import splink.duckdb.comparison_library as cl
-```
+## Procedures for running the project
 
-You can then read in your household and facility data:
+1. Clone the repository into your local machine using the link; https://github.com/blacklihgt/Record_Linkage.git
+2. Once cloned, run the command npm install to download all project dependencies. 
+    Note: Since we've used an nx monorepo setup, we may be required to install NX environment using the command 'npm add --global nx@latest'.
+3. Run 'nx run frontend:serve'. This allows the angular frontend pages to be rendered on localhost:4200
+4. To access the different pages in the web application, you can use the following paths after localhost:4200;
+    1.  /signup - Allows creation of an admin account
+    2.  /login - Allows logging in to the web application
+    3.  /homepage - Allows access to page where the record linkage results are to be displayed
+    4.  /file-upload - Allows for uploading CSV files to carry out record linkage.
+5. To run the API endpoint that communicates with both the ML model and database, run 'nx run api:serve'. This facilitates sending data to and from the ML model.
 
-```python
-household_data = pd.read_csv("../machine-learning/data/synthetic_hdss_v3.csv")
-facility_data = pd.read_csv("../machine-learning/data/synthetic_facility_v3.csv")
-```
 
-Next, you can create a Splink linker and apply blocking rules to the data:
-
-```python
-linker = DuckDBLinker(household_data, facility_data)
-linker.apply_blocking_rules(block_on)
-```
-
-Finally, you can link the data using Splink's comparison templates and comparison library  
+## Learn More
+* Notebook File used in training model: 
+* ML Model link: https://theonlydeity-mirage.hf.space/results
+* Design link: https://www.figma.com/file/vH2E7FcfuHCpEmrvPrResW/RecordFuse?type=design&node-id=0-1&mode=design&t=StC332GcXli1HjMN-0
