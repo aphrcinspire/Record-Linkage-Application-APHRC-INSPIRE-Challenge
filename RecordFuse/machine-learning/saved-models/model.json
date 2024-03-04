@@ -1,0 +1,221 @@
+{
+    "link_type": "link_only",
+    "blocking_rules_to_generate_predictions": [
+        {
+            "blocking_rule": "l.\"firstname\" = r.\"firstname\"",
+            "sql_dialect": "duckdb"
+        },
+        {
+            "blocking_rule": "l.\"petname\" = r.\"petname\"",
+            "sql_dialect": "duckdb"
+        },
+        {
+            "blocking_rule": "l.\"dob\" = r.\"dob\"",
+            "sql_dialect": "duckdb"
+        }
+    ],
+    "comparisons": [
+        {
+            "output_column_name": "firstname",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"firstname_l\" IS NULL OR \"firstname_r\" IS NULL",
+                    "label_for_charts": "Null",
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"firstname_l\" = \"firstname_r\"",
+                    "label_for_charts": "Exact match firstname",
+                    "m_probability": 0.9937951585434597,
+                    "u_probability": 0.002802454555428304,
+                    "tf_adjustment_column": "firstname",
+                    "tf_adjustment_weight": 1.0
+                },
+                {
+                    "sql_condition": "damerau_levenshtein(\"firstname_l\", \"firstname_r\") <= 1",
+                    "label_for_charts": "Damerau_levenshtein <= 1",
+                    "m_probability": 0.012409578655782556,
+                    "u_probability": 0.0008854350501420539
+                },
+                {
+                    "sql_condition": "jaro_winkler_similarity(\"firstname_l\", \"firstname_r\") >= 0.9",
+                    "label_for_charts": "Jaro_winkler_similarity >= 0.9",
+                    "m_probability": 3.583458120123345e-28,
+                    "u_probability": 0.0005858883416560058
+                },
+                {
+                    "sql_condition": "jaro_winkler_similarity(\"firstname_l\", \"firstname_r\") >= 0.8",
+                    "label_for_charts": "Jaro_winkler_similarity >= 0.8",
+                    "m_probability": 6.56359651171796e-13,
+                    "u_probability": 0.008557285949948793
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 5.212799268084948e-08,
+                    "u_probability": 0.9871689361028249
+                }
+            ],
+            "comparison_description": "Exact match vs. Firstname within levenshtein threshold 1 vs. Firstname within damerau-levenshtein threshold 1 vs. Firstname within jaro_winkler thresholds 0.9, 0.8 vs. anything else"
+        },
+        {
+            "output_column_name": "lastname",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"lastname_l\" IS NULL OR \"lastname_r\" IS NULL",
+                    "label_for_charts": "Null",
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"lastname_l\" = \"lastname_r\"",
+                    "label_for_charts": "Exact match lastname",
+                    "m_probability": 0.9971880010553488,
+                    "u_probability": 0.002984588810225925,
+                    "tf_adjustment_column": "lastname",
+                    "tf_adjustment_weight": 1.0
+                },
+                {
+                    "sql_condition": "damerau_levenshtein(\"lastname_l\", \"lastname_r\") <= 1",
+                    "label_for_charts": "Damerau_levenshtein <= 1",
+                    "m_probability": 0.0011088009090820417,
+                    "u_probability": 0.0008742546182762289
+                },
+                {
+                    "sql_condition": "jaro_winkler_similarity(\"lastname_l\", \"lastname_r\") >= 0.9",
+                    "label_for_charts": "Jaro_winkler_similarity >= 0.9",
+                    "m_probability": 1.4004700626608643e-18,
+                    "u_probability": 0.0008972968271397364
+                },
+                {
+                    "sql_condition": "jaro_winkler_similarity(\"lastname_l\", \"lastname_r\") >= 0.8",
+                    "label_for_charts": "Jaro_winkler_similarity >= 0.8",
+                    "m_probability": 1.5702600373087184e-29,
+                    "u_probability": 0.012987502300328621
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 0.00047764096460527515,
+                    "u_probability": 0.9822563574440295
+                }
+            ],
+            "comparison_description": "Exact match vs. Lastname within levenshtein threshold 1 vs. Lastname within damerau-levenshtein threshold 1 vs. Lastname within jaro_winkler thresholds 0.9, 0.8 vs. anything else"
+        },
+        {
+            "output_column_name": "petname",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"petname_l\" IS NULL OR \"petname_r\" IS NULL",
+                    "label_for_charts": "Null",
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"petname_l\" = \"petname_r\"",
+                    "label_for_charts": "Exact match petname",
+                    "m_probability": 0.7323589406928322,
+                    "u_probability": 0.0015672465809968138,
+                    "tf_adjustment_column": "petname",
+                    "tf_adjustment_weight": 1.0
+                },
+                {
+                    "sql_condition": "damerau_levenshtein(\"petname_l\", \"petname_r\") <= 1",
+                    "label_for_charts": "Damerau_levenshtein <= 1",
+                    "m_probability": 5.320609337797682e-37,
+                    "u_probability": 0.005174729520161149
+                },
+                {
+                    "sql_condition": "jaro_winkler_similarity(\"petname_l\", \"petname_r\") >= 0.9",
+                    "label_for_charts": "Jaro_winkler_similarity >= 0.9",
+                    "m_probability": 1.6626027036056605e-54,
+                    "u_probability": 0.00037842437437092037
+                },
+                {
+                    "sql_condition": "jaro_winkler_similarity(\"petname_l\", \"petname_r\") >= 0.8",
+                    "label_for_charts": "Jaro_winkler_similarity >= 0.8",
+                    "m_probability": 0.0024369157945006866,
+                    "u_probability": 0.00425056023083724
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 0.26642260140991736,
+                    "u_probability": 0.9886290392936339
+                }
+            ],
+            "comparison_description": "Exact match vs. Petname within levenshtein threshold 1 vs. Petname within damerau-levenshtein threshold 1 vs. Petname within jaro_winkler thresholds 0.9, 0.8 vs. anything else"
+        },
+        {
+            "output_column_name": "dob",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"dob_l\" IS NULL OR \"dob_r\" IS NULL",
+                    "label_for_charts": "Null",
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"dob_l\" = \"dob_r\"",
+                    "label_for_charts": "Exact match",
+                    "m_probability": 0.47221882816357075,
+                    "u_probability": 0.0001032577317949917
+                },
+                {
+                    "sql_condition": "damerau_levenshtein(\"dob_l\", \"dob_r\") <= 1",
+                    "label_for_charts": "Damerau_levenshtein <= 1",
+                    "m_probability": 0.08037714913383455,
+                    "u_probability": 0.000914228071507965
+                },
+                {
+                    "sql_condition": "\n            abs(date_diff('month',\n                strptime(\"dob_l\", '%Y-%m-%d'),\n                strptime(\"dob_r\", '%Y-%m-%d'))\n                ) <= 1\n        ",
+                    "label_for_charts": "Within 1 month",
+                    "m_probability": 0.43579194627623863,
+                    "u_probability": 0.002290335920237374
+                },
+                {
+                    "sql_condition": "\n            abs(date_diff('year',\n                strptime(\"dob_l\", '%Y-%m-%d'),\n                strptime(\"dob_r\", '%Y-%m-%d'))\n                ) <= 1\n        ",
+                    "label_for_charts": "Within 1 year",
+                    "m_probability": 0.006982073960989876,
+                    "u_probability": 0.027591061653305216
+                },
+                {
+                    "sql_condition": "\n            abs(date_diff('year',\n                strptime(\"dob_l\", '%Y-%m-%d'),\n                strptime(\"dob_r\", '%Y-%m-%d'))\n                ) <= 10\n        ",
+                    "label_for_charts": "Within 10 years",
+                    "m_probability": 0.0021468060485205194,
+                    "u_probability": 0.17212071027419396
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 0.0024831964168456483,
+                    "u_probability": 0.7969804063489605
+                }
+            ],
+            "comparison_description": "Exact match vs. Dob within damerau-levenshtein threshold 1 vs. Dates within the following thresholds Month(s): 1, Year(s): 1, Year(s): 10 vs. anything else"
+        },
+        {
+            "output_column_name": "sex",
+            "comparison_levels": [
+                {
+                    "sql_condition": "\"sex_l\" IS NULL OR \"sex_r\" IS NULL",
+                    "label_for_charts": "Null",
+                    "is_null_level": true
+                },
+                {
+                    "sql_condition": "\"sex_l\" = \"sex_r\"",
+                    "label_for_charts": "Exact match",
+                    "m_probability": 1.0,
+                    "u_probability": 0.5424361973950259
+                },
+                {
+                    "sql_condition": "ELSE",
+                    "label_for_charts": "All other comparisons",
+                    "m_probability": 9.810096103012103e-106,
+                    "u_probability": 0.45756380260497415
+                }
+            ],
+            "comparison_description": "Exact match vs. anything else"
+        }
+    ],
+    "sql_dialect": "duckdb",
+    "linker_uid": "x05r8v7s",
+    "probability_two_random_records_match": 0.679574379089127
+}
