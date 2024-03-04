@@ -46,6 +46,3 @@ linker.apply_blocking_rules(block_on)
 ```
 
 Finally, you can link the data using Splink's comparison templates and comparison library  
-  
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/2178462/6854dabc-35af-4c15-807d-64cb46931af0/model.ipynb
